@@ -1,0 +1,1 @@
+gcc -c test.c -I includes; gcc test.o libft_malloc_x86_64_Darwin.so; ./a.out
