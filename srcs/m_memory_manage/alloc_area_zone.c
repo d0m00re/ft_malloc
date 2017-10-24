@@ -87,12 +87,15 @@ t_memory		*alloc_area_zone(unsigned int nb_octet)
 	t_memory	*actual;
 	t_memory	*addr;
 
+	ft_putstr("begin alloc area zone\n");
 	if ((type = memory_found_type(nb_octet)) < TINY)
 		return (0);
 	addr = 0;
 	actual = g_mem_manage->memory_chunk[type];
+	ft_putstr("Middle area zone alloc\n");
 	if (type < LARGE)
 	{
+		ft_putstr("TINY OR MEDIUM ZONE ...\n");
 		if ((addr = find_free_space_all_area(actual,\
 		g_mem_manage->memory_info[type], nb_octet)))
 			return (addr);
@@ -107,5 +110,6 @@ t_memory		*alloc_area_zone(unsigned int nb_octet)
 	actual->mem_status[0] = nb_octet;
 	actual->link.next = g_mem_manage->memory_chunk[type];
 	g_mem_manage->memory_chunk[type] = actual;
+	ft_putstr("ENDOUILLE\n");
 	return (g_mem_manage->memory_chunk[type]->data);
 }

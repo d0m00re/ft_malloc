@@ -44,8 +44,14 @@ void			free_area_zone(void *ptr)
 	t_memory	*mem;
 	int			pos;
 
+	if (!ptr)
+	{
+		return ;
+	}
 	if ((mem = found_mem_area_in_large(ptr)))
+	{
 		free_destroy_element_large(mem);
+	}
 	else if ((mem = found_mem_area_in_basic(ptr, TINY)))
 	{
 		pos = found_id_mem_area_in_basic(ptr, mem, TINY);
@@ -58,4 +64,5 @@ void			free_area_zone(void *ptr)
 		if (pos != -1)
 			mem->mem_status[pos] = 0;
 	}
+//	show_alloc_mem();
 }

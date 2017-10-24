@@ -1,0 +1,1 @@
+gcc -o tes2  correct_tes2.c libft_malloc_x86_64_Darwin.so -I includes

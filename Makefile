@@ -19,6 +19,7 @@ NAME= libft_malloc.so
 ifeq ($(HOSTTYPE),)
 	HOSTTYPE := $(shell uname -m)_$(shell uname -s)
 endif
+
 LIB = ./libft_malloc_$(HOSTTYPE).so
 
 SRC_M_MEMORY_MANAGE_PATH=m_memory_manage
@@ -29,12 +30,12 @@ OBJ_PATH=srcs
 ## SOURCES
 ############################################
 SRC_M_MEMORY_MANAGE=  alloc_mem.c free_mem.c memory_create_block.c\
-											memory_manage_make.c memory_found_type.c\
-											alloc_area_zone.c init_int_tab.c memory_mothership_manage.c\
-											free_area_zone.c memory_free.c memory_search_block.c\
-											realloc_area_zone.c show_alloc_mem.c display_nbr.c\
-											show_memory_spec.c show_memory_tab_status.c\
-											calcul_nb_octet.c
+			memory_manage_make.c memory_found_type.c\
+			alloc_area_zone.c init_int_tab.c memory_mothership_manage.c\
+			free_area_zone.c memory_free.c memory_search_block.c\
+			realloc_area_zone.c show_alloc_mem.c display_nbr.c\
+			show_memory_spec.c show_memory_tab_status.c\
+			calcul_nb_octet.c
 
 ############################################
 ## OBJECT
@@ -56,7 +57,6 @@ all: $(NAME)
 
 $(NAME): $(OBJ_M_MM)
 	@echo "[$(NAME)]"
-	#@$(CC) $(CFLAGS) main2.c $(OBJ_M_MM) -I ./$(INC) -o $(NAME)
 	$(CC) -shared -o $(LIB) $(OBJ_M_MM) -I ./$(INC)
 	ln -fs $(LIB) $@
 

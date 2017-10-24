@@ -194,7 +194,41 @@ int test_wrong_addr_free_realloc(int show, int size_alloc)
 	return (1);
 }
 
-int main(void)
+#include <stdio.h>
+
+int main()
+{
+	int c;
+	void *addr[100];
+	void *addr2[100];
+
+
+	//addr[0] = malloc
+	int *x = malloc(12);
+        *x = 4;
+           x[1] = 5;
+	x[2] = 244;
+                printf("%p - %p - %p\n", &x[0], &x[1], &x[2]);
+                x = realloc(x, 16000);
+                printf("%p - %p - %p\n", &x[0], &x[1], &x[2]);
+                return 0;
+/*	c = 0;
+	while (c < 100)
+	{
+		addr[c] = malloc(10);
+		c++;
+	}
+	c = 0;
+	while (c < 100)
+	{
+		addr2[c] = realloc(addr[c], 1000);
+		c++;
+	}
+	return (1);
+*/
+}
+
+int main2(void)
 {
 	//int tiny_size = TINY_NB_OCTET_BY_BLOCK - 1;
 	//int medium_size = MEDIUM_NB_OCTET_BY_BLOCK - 1;

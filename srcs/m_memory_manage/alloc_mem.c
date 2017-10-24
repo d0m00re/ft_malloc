@@ -16,5 +16,5 @@
 void	*alloc_mem(size_t size)
 {
 	return (mmap(NULL, size, PROT_READ | PROT_WRITE,\
-				MAP_ANON | MAP_SHARED, -1, 0));
+				MAP_ANON | MAP_PRIVATE, -1, 0));
 }
